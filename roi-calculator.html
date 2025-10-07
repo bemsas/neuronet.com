@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI ROI Calculator - Calculate Your AI Investment Returns | NeuroNet.dev</title>
+    <meta name="description" content="Free AI ROI calculator. Estimate cost savings and efficiency gains from AI automation. Get personalized recommendations for your business.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="font-inter bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-lg border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-brain text-white text-sm"></i>
+                        </div>
+                        <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                            NeuroNet.dev
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#services" class="text-gray-300 hover:text-white transition-colors">Services</a>
+                    <a href="index.html#about" class="text-gray-300 hover:text-white transition-colors">About</a>
+                    <a href="healthcare-ai.html" class="text-gray-300 hover:text-white transition-colors">Healthcare AI</a>
+                    <a href="pricing.html" class="text-gray-300 hover:text-white transition-colors">Pricing</a>
+                    <a href="roi-calculator.html" class="text-blue-400 font-medium">ROI Calculator</a>
+                    <a href="index.html#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Column - Content -->
+                <div>
+                    <div class="mb-6" data-aos="fade-up">
+                        <span class="inline-flex items-center px-4 py-2 rounded-full bg-green-500/20 text-green-300 text-sm font-semibold">
+                            <i class="fas fa-calculator mr-2"></i>
+                            Free AI ROI Calculator
+                        </span>
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-6xl font-bold mb-8 leading-tight" data-aos="fade-up" data-aos-delay="100">
+                        Calculate Your
+                        <span class="bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                            AI Investment Returns
+                        </span>
+                    </h1>
+                    
+                    <p class="text-xl text-gray-300 mb-8 leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                        Discover potential cost savings, efficiency gains, and ROI from AI automation tailored to your business size and industry.
+                    </p>
+                    
+                    <div class="space-y-4 text-gray-400" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check text-green-400"></i>
+                            <span>Personalized ROI projections</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check text-green-400"></i>
+                            <span>Industry-specific calculations</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check text-green-400"></i>
+                            <span>Implementation timeline estimates</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Calculator Form -->
+                <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10" data-aos="fade-left">
+                    <h2 class="text-2xl font-bold mb-6">AI ROI Calculator</h2>
+                    
+                    <form id="roiCalculator" class="space-y-6">
+                        <!-- Company Size -->
+                        <div>
+                            <label class="block text-sm font-medium mb-3">Company Size</label>
+                            <select id="companySize" class="w-full bg-black/20 border border-white/20 rounded-lg px-4 py-3 text-white focus:border-blue-400 focus:outline-none">
+                                <option value="">Select company size</option>
+                                <option value="startup">Startup (1-10 employees)</option>
+                                <option value="small">Small Business (11-50 employees)</option>
+                                <option value="medium">Medium Business (51-200 employees)</option>
+                                <option value="large">Large Enterprise (200+ employees)</option>
+                            </select>
+                        </div>
+
+                        <!-- Industry -->
+                        <div>
+                            <label class="block text-sm font-medium mb-3">Industry</label>
+                            <select id="industry" class="w-full bg-black/20 border border-white/20 rounded-lg px-4 py-3 text-white focus:border-blue-400 focus:outline-none">
+                                <option value="">Select industry</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="finance">Financial Services</option>
+                                <option value="manufacturing">Manufacturing</option>
+                                <option value="retail">Retail/E-commerce</option>
+                                <option value="technology">Technology</option>
+                                <option value="legal">Legal Services</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Current Manual Hours -->
+                        <div>
+                            <label class="block text-sm font-medium mb-3">Weekly Hours Spent on Repetitive Tasks</label>
+                            <input type="range" id="manualHours" min="5" max="100" value="20" class="w-full">
+                            <div class="flex justify-between text-sm text-gray-400 mt-1">
+                                <span>5 hours</span>
+                                <span id="manualHoursDisplay" class="text-blue-400 font-semibold">20 hours</span>
+                                <span>100+ hours</span>
+                            </div>
+                        </div>
+
+                        <!-- Average Hourly Cost -->
+                        <div>
+                            <label class="block text-sm font-medium mb-3">Average Employee Hourly Cost (£)</label>
+                            <input type="range" id="hourlyCost" min="15" max="100" value="35" class="w-full">
+                            <div class="flex justify-between text-sm text-gray-400 mt-1">
+                                <span>£15</span>
+                                <span id="hourlyCostDisplay" class="text-blue-400 font-semibold">£35</span>
+                                <span>£100+</span>
+                            </div>
+                        </div>
+
+                        <!-- AI Solution Type -->
+                        <div>
+                            <label class="block text-sm font-medium mb-3">Primary AI Interest</label>
+                            <select id="aiSolution" class="w-full bg-black/20 border border-white/20 rounded-lg px-4 py-3 text-white focus:border-blue-400 focus:outline-none">
+                                <option value="">Select AI solution</option>
+                                <option value="automation">Process Automation</option>
+                                <option value="chatbot">Customer Service AI</option>
+                                <option value="analytics">Data Analytics & Insights</option>
+                                <option value="document">Document Processing</option>
+                                <option value="scheduling">Intelligent Scheduling</option>
+                                <option value="comprehensive">Comprehensive AI Platform</option>
+                            </select>
+                        </div>
+
+                        <!-- Calculate Button -->
+                        <button type="submit" class="w-full bg-gradient-to-r from-green-500 to-blue-600 px-8 py-4 rounded-full text-white font-semibold text-lg hover:from-green-600 hover:to-blue-700 transition-all transform hover:scale-105">
+                            <i class="fas fa-calculator mr-2"></i>
+                            Calculate ROI
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="py-24 relative hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6">Your AI ROI Projection</h2>
+                <p class="text-xl text-gray-400">Based on your inputs, here's what AI could do for your business</p>
+            </div>
+
+            <!-- ROI Cards -->
+            <div class="grid md:grid-cols-4 gap-8 mb-16">
+                <div class="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center border border-white/10">
+                    <div class="text-3xl font-bold text-green-400 mb-2" id="annualSavings">£0</div>
+                    <div class="text-gray-400">Annual Savings</div>
+                </div>
+                <div class="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center border border-white/10">
+                    <div class="text-3xl font-bold text-blue-400 mb-2" id="efficiencyGain">0%</div>
+                    <div class="text-gray-400">Efficiency Gain</div>
+                </div>
+                <div class="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center border border-white/10">
+                    <div class="text-3xl font-bold text-purple-400 mb-2" id="paybackPeriod">0</div>
+                    <div class="text-gray-400">Payback Period (Months)</div>
+                </div>
+                <div class="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center border border-white/10">
+                    <div class="text-3xl font-bold text-orange-400 mb-2" id="roiPercentage">0%</div>
+                    <div class="text-gray-400">3-Year ROI</div>
+                </div>
+            </div>
+
+            <!-- Chart -->
+            <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 mb-16">
+                <h3 class="text-2xl font-bold mb-6 text-center">Projected Savings Over Time</h3>
+                <div style="height: 400px;">
+                    <canvas id="savingsChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-2xl p-8 border border-blue-500/20 mb-16">
+                <h3 class="text-2xl font-bold mb-6">Recommended Next Steps</h3>
+                <div id="recommendations" class="space-y-4">
+                    <!-- Dynamic recommendations will be inserted here -->
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center">
+                <h3 class="text-3xl font-bold mb-6">Ready to Turn This Projection into Reality?</h3>
+                <p class="text-xl text-gray-300 mb-8">Book a free consultation to discuss your specific AI implementation strategy</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://booking.akiflow.com/andy_king-1e34" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-green-500 to-blue-600 px-10 py-4 rounded-full text-white font-bold text-lg hover:from-green-600 hover:to-blue-700 transition-all transform hover:scale-105">
+                        <i class="fas fa-calendar-check mr-2"></i>
+                        Book Free Strategy Session
+                    </a>
+                    <a href="pricing.html" class="border border-white/30 px-10 py-4 rounded-full text-white font-bold text-lg hover:bg-white/10 transition-all transform hover:scale-105">
+                        <i class="fas fa-eye mr-2"></i>
+                        View Pricing Options
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black/20 backdrop-blur-lg border-t border-white/10 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-brain text-white text-sm"></i>
+                        </div>
+                        <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                            NeuroNet.dev
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="flex space-x-6 text-gray-400">
+                    <a href="tel:01908040777" class="hover:text-white transition-colors" title="Call us">
+                        <i class="fas fa-phone text-xl"></i>
+                    </a>
+                    <a href="mailto:hello@neuronet.dev" class="hover:text-white transition-colors" title="Email us">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-white/10 text-center text-gray-400">
+                <p>&copy; 2024 NeuroNet.dev. Calculate Your AI Investment Returns.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ROI Calculator Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 50,
+                easing: 'ease-out-cubic'
+            });
+
+            const form = document.getElementById('roiCalculator');
+            const manualHoursSlider = document.getElementById('manualHours');
+            const hourlyCostSlider = document.getElementById('hourlyCost');
+            const manualHoursDisplay = document.getElementById('manualHoursDisplay');
+            const hourlyCostDisplay = document.getElementById('hourlyCostDisplay');
+            const resultsSection = document.getElementById('results');
+
+            // Update slider displays
+            manualHoursSlider.addEventListener('input', function() {
+                manualHoursDisplay.textContent = this.value + ' hours';
+            });
+
+            hourlyCostSlider.addEventListener('input', function() {
+                hourlyCostDisplay.textContent = '£' + this.value;
+            });
+
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                calculateROI();
+            });
+
+            function calculateROI() {
+                const companySize = document.getElementById('companySize').value;
+                const industry = document.getElementById('industry').value;
+                const manualHours = parseInt(document.getElementById('manualHours').value);
+                const hourlyCost = parseInt(document.getElementById('hourlyCost').value);
+                const aiSolution = document.getElementById('aiSolution').value;
+
+                if (!companySize || !industry || !aiSolution) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+
+                // Calculate base metrics
+                const weeklyCurrentCost = manualHours * hourlyCost;
+                const annualCurrentCost = weeklyCurrentCost * 52;
+                
+                // AI efficiency factors by solution type
+                const efficiencyFactors = {
+                    'automation': 0.6,
+                    'chatbot': 0.4,
+                    'analytics': 0.3,
+                    'document': 0.7,
+                    'scheduling': 0.5,
+                    'comprehensive': 0.8
+                };
+
+                // Company size multipliers
+                const sizeMultipliers = {
+                    'startup': 1.0,
+                    'small': 1.2,
+                    'medium': 1.4,
+                    'large': 1.6
+                };
+
+                // Industry complexity factors
+                const industryFactors = {
+                    'healthcare': 1.3,
+                    'finance': 1.2,
+                    'manufacturing': 1.1,
+                    'retail': 1.0,
+                    'technology': 0.9,
+                    'legal': 1.4,
+                    'other': 1.0
+                };
+
+                const efficiencyGain = efficiencyFactors[aiSolution] || 0.5;
+                const sizeMultiplier = sizeMultipliers[companySize] || 1.0;
+                const industryMultiplier = industryFactors[industry] || 1.0;
+
+                // Calculate projections
+                const totalEfficiency = Math.min(efficiencyGain * sizeMultiplier * industryMultiplier, 0.85);
+                const annualSavings = Math.round(annualCurrentCost * totalEfficiency);
+                const efficiencyPercentage = Math.round(totalEfficiency * 100);
+                
+                // Implementation costs (rough estimates)
+                const implementationCosts = {
+                    'startup': 15000,
+                    'small': 25000,
+                    'medium': 50000,
+                    'large': 100000
+                };
+
+                const implementationCost = implementationCosts[companySize] || 25000;
+                const paybackMonths = Math.round((implementationCost / annualSavings) * 12);
+                const threeYearROI = Math.round(((annualSavings * 3 - implementationCost) / implementationCost) * 100);
+
+                // Update display
+                document.getElementById('annualSavings').textContent = '£' + annualSavings.toLocaleString();
+                document.getElementById('efficiencyGain').textContent = efficiencyPercentage + '%';
+                document.getElementById('paybackPeriod').textContent = paybackMonths;
+                document.getElementById('roiPercentage').textContent = threeYearROI + '%';
+
+                // Generate recommendations
+                generateRecommendations(companySize, industry, aiSolution, annualSavings);
+
+                // Create chart
+                createSavingsChart(annualSavings, implementationCost);
+
+                // Show results
+                resultsSection.classList.remove('hidden');
+                resultsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            function generateRecommendations(companySize, industry, aiSolution, savings) {
+                const recommendationsDiv = document.getElementById('recommendations');
+                let recommendations = [];
+
+                if (savings > 50000) {
+                    recommendations.push({
+                        icon: 'fas fa-rocket',
+                        title: 'High ROI Potential',
+                        description: 'Your business shows excellent potential for AI transformation with significant cost savings opportunities.'
+                    });
+                }
+
+                if (companySize === 'startup' || companySize === 'small') {
+                    recommendations.push({
+                        icon: 'fas fa-seedling',
+                        title: 'Start with Basic Automation',
+                        description: 'Begin with simple process automation to build AI competency and demonstrate quick wins.'
+                    });
+                } else {
+                    recommendations.push({
+                        icon: 'fas fa-building',
+                        title: 'Enterprise AI Strategy',
+                        description: 'Consider a comprehensive AI platform to maximize efficiency gains across multiple departments.'
+                    });
+                }
+
+                if (industry === 'healthcare' || industry === 'finance') {
+                    recommendations.push({
+                        icon: 'fas fa-shield-alt',
+                        title: 'Compliance-First Approach',
+                        description: 'Prioritize HIPAA/regulatory compliant AI solutions with strong security frameworks.'
+                    });
+                }
+
+                recommendations.push({
+                    icon: 'fas fa-calendar',
+                    title: 'Free Strategy Session',
+                    description: 'Book a consultation to create a detailed implementation roadmap tailored to your specific needs.'
+                });
+
+                recommendationsDiv.innerHTML = recommendations.map(rec => `
+                    <div class="flex items-start space-x-4 p-4 bg-white/5 rounded-lg">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="${rec.icon} text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-1">${rec.title}</h4>
+                            <p class="text-gray-400">${rec.description}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            function createSavingsChart(annualSavings, implementationCost) {
+                const ctx = document.getElementById('savingsChart').getContext('2d');
+                
+                // Destroy existing chart if it exists
+                if (window.savingsChart) {
+                    window.savingsChart.destroy();
+                }
+
+                const months = [];
+                const cumulativeSavings = [];
+                const netValue = [];
+
+                for (let i = 1; i <= 36; i++) {
+                    months.push('Month ' + i);
+                    const monthlySavings = annualSavings / 12;
+                    const cumulative = monthlySavings * i;
+                    const net = cumulative - implementationCost;
+                    
+                    cumulativeSavings.push(cumulative);
+                    netValue.push(net);
+                }
+
+                window.savingsChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: months.filter((_, i) => i % 3 === 0), // Show every 3 months
+                        datasets: [{
+                            label: 'Cumulative Savings',
+                            data: cumulativeSavings.filter((_, i) => i % 3 === 0),
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            tension: 0.4
+                        }, {
+                            label: 'Net Value (After Implementation Cost)',
+                            data: netValue.filter((_, i) => i % 3 === 0),
+                            borderColor: '#3b82f6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: 'white'
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    color: 'rgba(255, 255, 255, 0.7)'
+                                },
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.1)'
+                                }
+                            },
+                            y: {
+                                ticks: {
+                                    color: 'rgba(255, 255, 255, 0.7)',
+                                    callback: function(value) {
+                                        return '£' + value.toLocaleString();
+                                    }
+                                },
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.1)'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
