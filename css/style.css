@@ -267,6 +267,38 @@ a:focus {
     outline-offset: 2px;
 }
 
+/* Select Dropdown Styling */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2393c5fd' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+}
+
+select option {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    color: #ffffff;
+    padding: 0.75rem 1rem;
+    border: none;
+}
+
+select option:hover {
+    background: linear-gradient(135deg, #4c1d95 0%, #5b21b6 100%);
+    color: #a5f3fc;
+}
+
+select option:checked,
+select option:focus {
+    background: linear-gradient(135deg, #3730a3 0%, #4c1d95 100%);
+    color: #60a5fa;
+    font-weight: 600;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
     *,

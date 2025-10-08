@@ -102,7 +102,7 @@
                         <!-- Company Size -->
                         <div>
                             <label class="block text-sm font-medium mb-3">Company Size</label>
-                            <select id="companySize" class="w-full bg-black/20 border border-white/20 rounded-lg px-4 py-3 text-white focus:border-blue-400 focus:outline-none">
+                            <select id="companySize" class="w-full bg-slate-800/80 border border-purple-500/30 rounded-lg px-4 py-3 text-white focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/50 transition-all">
                                 <option value="">Select company size</option>
                                 <option value="startup">Startup (1-10 employees)</option>
                                 <option value="small">Small Business (11-50 employees)</option>
@@ -114,7 +114,7 @@
                         <!-- Industry -->
                         <div>
                             <label class="block text-sm font-medium mb-3">Industry</label>
-                            <select id="industry" class="w-full bg-black/20 border border-white/20 rounded-lg px-4 py-3 text-white focus:border-blue-400 focus:outline-none">
+                            <select id="industry" class="w-full bg-slate-800/80 border border-purple-500/30 rounded-lg px-4 py-3 text-white focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/50 transition-all">
                                 <option value="">Select industry</option>
                                 <option value="healthcare">Healthcare</option>
                                 <option value="finance">Financial Services</option>
@@ -151,7 +151,7 @@
                         <!-- AI Solution Type -->
                         <div>
                             <label class="block text-sm font-medium mb-3">Primary AI Interest</label>
-                            <select id="aiSolution" class="w-full bg-black/20 border border-white/20 rounded-lg px-4 py-3 text-white focus:border-blue-400 focus:outline-none">
+                            <select id="aiSolution" class="w-full bg-slate-800/80 border border-purple-500/30 rounded-lg px-4 py-3 text-white focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/50 transition-all">
                                 <option value="">Select AI solution</option>
                                 <option value="automation">Process Automation</option>
                                 <option value="chatbot">Customer Service AI</option>
@@ -176,44 +176,109 @@
     <!-- Results Section -->
     <section id="results" class="py-24 relative hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-6">Your AI ROI Projection</h2>
-                <p class="text-xl text-gray-400">Based on your inputs, here's what AI could do for your business</p>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-400/30 mb-6">
+                    <i class="fas fa-chart-line text-green-400 mr-3"></i>
+                    <span class="text-green-300 font-semibold">Calculation Complete!</span>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    Your AI ROI Projection
+                </h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Based on your inputs, here's the transformative impact AI could have on your business</p>
             </div>
 
             <!-- ROI Cards -->
-            <div class="grid md:grid-cols-4 gap-8 mb-16">
-                <div class="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center border border-white/10">
-                    <div class="text-3xl font-bold text-green-400 mb-2" id="annualSavings">£0</div>
-                    <div class="text-gray-400">Annual Savings</div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <!-- Annual Savings Card -->
+                <div class="group relative bg-gradient-to-br from-green-500/10 to-emerald-600/10 backdrop-blur-lg rounded-2xl p-8 border border-green-500/30 hover:border-green-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-4 right-4 w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fas fa-coins text-green-400 text-xl"></i>
+                    </div>
+                    <div class="mb-4">
+                        <div class="text-sm font-medium text-green-300 mb-2">Annual Savings</div>
+                        <div class="text-5xl font-bold text-green-400 mb-1" id="annualSavings">£0</div>
+                        <div class="text-xs text-gray-400">Estimated cost reduction per year</div>
+                    </div>
+                    <div class="h-2 bg-green-900/30 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-green-500 to-emerald-400 rounded-full animate-pulse" style="width: 100%"></div>
+                    </div>
                 </div>
-                <div class="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center border border-white/10">
-                    <div class="text-3xl font-bold text-blue-400 mb-2" id="efficiencyGain">0%</div>
-                    <div class="text-gray-400">Efficiency Gain</div>
+
+                <!-- Efficiency Gain Card -->
+                <div class="group relative bg-gradient-to-br from-blue-500/10 to-cyan-600/10 backdrop-blur-lg rounded-2xl p-8 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute top-4 right-4 w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fas fa-rocket text-blue-400 text-xl"></i>
+                    </div>
+                    <div class="mb-4">
+                        <div class="text-sm font-medium text-blue-300 mb-2">Efficiency Gain</div>
+                        <div class="text-5xl font-bold text-blue-400 mb-1" id="efficiencyGain">0%</div>
+                        <div class="text-xs text-gray-400">Time saved through automation</div>
+                    </div>
+                    <div class="h-2 bg-blue-900/30 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full animate-pulse" style="width: 100%"></div>
+                    </div>
                 </div>
-                <div class="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center border border-white/10">
-                    <div class="text-3xl font-bold text-purple-400 mb-2" id="paybackPeriod">0</div>
-                    <div class="text-gray-400">Payback Period (Months)</div>
+
+                <!-- Payback Period Card -->
+                <div class="group relative bg-gradient-to-br from-purple-500/10 to-pink-600/10 backdrop-blur-lg rounded-2xl p-8 border border-purple-500/30 hover:border-purple-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute top-4 right-4 w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fas fa-clock text-purple-400 text-xl"></i>
+                    </div>
+                    <div class="mb-4">
+                        <div class="text-sm font-medium text-purple-300 mb-2">Payback Period</div>
+                        <div class="text-5xl font-bold text-purple-400 mb-1"><span id="paybackPeriod">0</span> <span class="text-2xl">mo</span></div>
+                        <div class="text-xs text-gray-400">Time to recover investment</div>
+                    </div>
+                    <div class="h-2 bg-purple-900/30 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-purple-500 to-pink-400 rounded-full animate-pulse" style="width: 100%"></div>
+                    </div>
                 </div>
-                <div class="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center border border-white/10">
-                    <div class="text-3xl font-bold text-orange-400 mb-2" id="roiPercentage">0%</div>
-                    <div class="text-gray-400">3-Year ROI</div>
+
+                <!-- 3-Year ROI Card -->
+                <div class="group relative bg-gradient-to-br from-orange-500/10 to-red-600/10 backdrop-blur-lg rounded-2xl p-8 border border-orange-500/30 hover:border-orange-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/20" data-aos="fade-up" data-aos-delay="400">
+                    <div class="absolute top-4 right-4 w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fas fa-chart-line text-orange-400 text-xl"></i>
+                    </div>
+                    <div class="mb-4">
+                        <div class="text-sm font-medium text-orange-300 mb-2">3-Year ROI</div>
+                        <div class="text-5xl font-bold text-orange-400 mb-1" id="roiPercentage">0%</div>
+                        <div class="text-xs text-gray-400">Return on investment over 3 years</div>
+                    </div>
+                    <div class="h-2 bg-orange-900/30 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-orange-500 to-red-400 rounded-full animate-pulse" style="width: 100%"></div>
+                    </div>
                 </div>
             </div>
 
             <!-- Chart -->
-            <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 mb-16">
-                <h3 class="text-2xl font-bold mb-6 text-center">Projected Savings Over Time</h3>
-                <div style="height: 400px;">
+            <div class="bg-gradient-to-br from-white/5 to-blue-500/5 backdrop-blur-lg rounded-2xl p-8 border border-blue-500/20 mb-16 hover:border-blue-400/40 transition-all duration-500" data-aos="fade-up">
+                <div class="flex items-center justify-center mb-8">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-chart-area text-white"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Projected Savings Over Time</h3>
+                    </div>
+                </div>
+                <div style="height: 450px;" class="relative">
                     <canvas id="savingsChart"></canvas>
                 </div>
             </div>
 
             <!-- Recommendations -->
-            <div class="bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-2xl p-8 border border-blue-500/20 mb-16">
-                <h3 class="text-2xl font-bold mb-6">Recommended Next Steps</h3>
-                <div id="recommendations" class="space-y-4">
-                    <!-- Dynamic recommendations will be inserted here -->
+            <div class="relative overflow-hidden bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-pink-600/10 rounded-2xl p-8 border border-blue-500/30 mb-16" data-aos="fade-up">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center space-x-3 mb-8">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-lightbulb text-white"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold">Recommended Next Steps</h3>
+                    </div>
+                    <div id="recommendations" class="space-y-4">
+                        <!-- Dynamic recommendations will be inserted here -->
+                    </div>
                 </div>
             </div>
 
@@ -222,7 +287,7 @@
                 <h3 class="text-3xl font-bold mb-6">Ready to Turn This Projection into Reality?</h3>
                 <p class="text-xl text-gray-300 mb-8">Book a free consultation to discuss your specific AI implementation strategy</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="https://booking.akiflow.com/andy_king-1e34" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-green-500 to-blue-600 px-10 py-4 rounded-full text-white font-bold text-lg hover:from-green-600 hover:to-blue-700 transition-all transform hover:scale-105">
+                    <a href="https://booking.akiflow.com/andy_king-4f25" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-green-500 to-blue-600 px-10 py-4 rounded-full text-white font-bold text-lg hover:from-green-600 hover:to-blue-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-green-500/50">
                         <i class="fas fa-calendar-check mr-2"></i>
                         Book Free Strategy Session
                     </a>
@@ -359,21 +424,59 @@
                 const paybackMonths = Math.round((implementationCost / annualSavings) * 12);
                 const threeYearROI = Math.round(((annualSavings * 3 - implementationCost) / implementationCost) * 100);
 
-                // Update display
-                document.getElementById('annualSavings').textContent = '£' + annualSavings.toLocaleString();
-                document.getElementById('efficiencyGain').textContent = efficiencyPercentage + '%';
-                document.getElementById('paybackPeriod').textContent = paybackMonths;
-                document.getElementById('roiPercentage').textContent = threeYearROI + '%';
+                // Store results globally for Tally form
+                window.calculatorResults = {
+                    companySize: companySize,
+                    industry: industry,
+                    manualHours: manualHours,
+                    hourlyCost: hourlyCost,
+                    aiSolution: aiSolution,
+                    annualSavings: annualSavings,
+                    efficiencyPercentage: efficiencyPercentage,
+                    paybackMonths: paybackMonths,
+                    threeYearROI: threeYearROI
+                };
+
+                // Show results first
+                resultsSection.classList.remove('hidden');
+                resultsSection.scrollIntoView({ behavior: 'smooth' });
+
+                // Animate numbers with counting effect
+                setTimeout(() => {
+                    animateNumber('annualSavings', 0, annualSavings, 1500, '£', true);
+                    animateNumber('efficiencyGain', 0, efficiencyPercentage, 1500, '', false, '%');
+                    animateNumber('paybackPeriod', 0, paybackMonths, 1500);
+                    animateNumber('roiPercentage', 0, threeYearROI, 1500, '', false, '%');
+                }, 300);
 
                 // Generate recommendations
                 generateRecommendations(companySize, industry, aiSolution, annualSavings);
 
                 // Create chart
                 createSavingsChart(annualSavings, implementationCost);
+            }
 
-                // Show results
-                resultsSection.classList.remove('hidden');
-                resultsSection.scrollIntoView({ behavior: 'smooth' });
+            function animateNumber(elementId, start, end, duration, prefix = '', useCommas = false, suffix = '') {
+                const element = document.getElementById(elementId);
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+
+                    // Easing function for smooth animation
+                    const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                    const current = Math.round(start + (end - start) * easeOutQuart);
+
+                    const formattedNumber = useCommas ? current.toLocaleString() : current;
+                    element.textContent = prefix + formattedNumber + suffix;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    }
+                }
+
+                requestAnimationFrame(update);
             }
 
             function generateRecommendations(companySize, industry, aiSolution, savings) {
@@ -416,14 +519,17 @@
                     description: 'Book a consultation to create a detailed implementation roadmap tailored to your specific needs.'
                 });
 
-                recommendationsDiv.innerHTML = recommendations.map(rec => `
-                    <div class="flex items-start space-x-4 p-4 bg-white/5 rounded-lg">
-                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <i class="${rec.icon} text-white"></i>
+                recommendationsDiv.innerHTML = recommendations.map((rec, index) => `
+                    <div class="group flex items-start space-x-4 p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-blue-400/50 hover:bg-white/10 transition-all duration-500 hover:scale-102 hover:shadow-xl hover:shadow-blue-500/10" data-aos="fade-left" data-aos-delay="${index * 100}">
+                        <div class="w-14 h-14 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
+                            <i class="${rec.icon} text-white text-xl"></i>
                         </div>
-                        <div>
-                            <h4 class="font-semibold text-lg mb-1">${rec.title}</h4>
-                            <p class="text-gray-400">${rec.description}</p>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-xl mb-2 text-white group-hover:text-blue-300 transition-colors">${rec.title}</h4>
+                            <p class="text-gray-400 leading-relaxed">${rec.description}</p>
+                        </div>
+                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <i class="fas fa-arrow-right text-blue-400"></i>
                         </div>
                     </div>
                 `).join('');
@@ -431,9 +537,9 @@
 
             function createSavingsChart(annualSavings, implementationCost) {
                 const ctx = document.getElementById('savingsChart').getContext('2d');
-                
+
                 // Destroy existing chart if it exists
-                if (window.savingsChart) {
+                if (window.savingsChart && typeof window.savingsChart.destroy === 'function') {
                     window.savingsChart.destroy();
                 }
 
