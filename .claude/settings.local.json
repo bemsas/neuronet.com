@@ -5,7 +5,9 @@
       "Bash(start cmd /k \"python -m http.server 8000\")",
       "Bash(python:*)",
       "Bash(timeout:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Read(//c/**)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
